@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.zip
+data/raw/
+data/extracted/
+data/extracted/N03_neighbors/
+data/raw/N03_neighbors/

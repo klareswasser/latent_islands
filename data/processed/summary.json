@@ -1,0 +1,108 @@
+{
+  "n03_polygons": 124094,
+  "w05_segments": 97697,
+  "natural_landmass_count": 121936,
+  "river_cut_parent_count": 29,
+  "post_cut_fragment_count": 1860,
+  "island_count": 626,
+  "island_area_km2": 10177.59,
+  "min_area_km2": 0.02,
+  "neighbor_distance_m": 500.0,
+  "half_width_m": {
+    "1": 45.0,
+    "2": 30.0,
+    "3": 18.0
+  },
+  "largest": [
+    {
+      "island_id": "JP-0001",
+      "area_km2": 4736.866,
+      "perimeter_km": 3450.14,
+      "prefecture": "千葉県",
+      "municipality": "袖ケ浦市",
+      "rivers": "ミカダ川・一宮川・七曲川",
+      "color": 0
+    },
+    {
+      "island_id": "JP-0002",
+      "area_km2": 477.986,
+      "perimeter_km": 400.48,
+      "prefecture": "愛知県",
+      "municipality": "あま市",
+      "rivers": "三宅川・五条川・光堂川",
+      "color": 0
+    },
+    {
+      "island_id": "JP-0003",
+      "area_km2": 381.793,
+      "perimeter_km": 293.69,
+      "prefecture": "千葉県",
+      "municipality": "柏市",
+      "rivers": "三郷放水路・下手賀川・中川",
+      "color": 1
+    },
+    {
+      "island_id": "JP-0004",
+      "area_km2": 345.999,
+      "perimeter_km": 518.34,
+      "prefecture": "宮城県",
+      "municipality": "石巻市",
+      "rivers": "倉の迫川・八津川・内の原川",
+      "color": 1
+    },
+    {
+      "island_id": "JP-0005",
+      "area_km2": 183.937,
+      "perimeter_km": 140.23,
+      "prefecture": "新潟県",
+      "municipality": "新潟市",
+      "rivers": "中ノ口川・中之島川・信濃川",
+      "color": 0
+    },
+    {
+      "island_id": "JP-0006",
+      "area_km2": 170.564,
+      "perimeter_km": 156.25,
+      "prefecture": "宮城県",
+      "municipality": "石巻市",
+      "rivers": "倉の迫川・八ヶ村江川・出来川",
+      "color": 0
+    },
+    {
+      "island_id": "JP-0007",
+      "area_km2": 120.246,
+      "perimeter_km": 71.86,
+      "prefecture": "新潟県",
+      "municipality": "新潟市",
+      "rivers": "中ノ口川・信濃川・安野川",
+      "color": 2
+    },
+    {
+      "island_id": "JP-0008",
+      "area_km2": 119.212,
+      "perimeter_km": 106.58,
+      "prefecture": "福岡県",
+      "municipality": "柳川市",
+      "rivers": "二ツ川・二ツ川放水路・吉岡川",
+      "color": 0
+    },
+    {
+      "island_id": "JP-0009",
+      "area_km2": 102.365,
+      "perimeter_km": 123.09,
+      "prefecture": "新潟県",
+      "municipality": "新潟市",
+      "rivers": "信濃川・大通川放水路・広通川",
+      "color": 1
+    },
+    {
+      "island_id": "JP-0010",
+      "area_km2": 94.921,
+      "perimeter_km": 117.57,
+      "prefecture": "新潟県",
+      "municipality": "新潟市",
+      "rivers": "下条川・中ノ口川・五十嵐川",
+      "color": 1
+    }
+  ]
+}

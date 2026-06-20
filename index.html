@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="海・河川・運河によって本土から分離した、日本全国の潜在的な島を可視化する地図。">
+  <title>潜在島マップ — Latent Islands</title>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>地理データを読み込んでいます…</p>
+  </div>
+
+  <input id="controls-state" class="panel-state" type="checkbox" aria-hidden="true">
+  <input id="legend-state" class="panel-state" type="checkbox" aria-hidden="true">
+
+  <div id="map" aria-label="日本全国の潜在島地図"></div>
+
+  <header id="header">
+    <h1>潜在島マップ</h1>
+    <p>水の境界で読み直す日本の陸地</p>
+    <small>出典：国土交通省「国土数値情報 N03・W05」</small>
+  </header>
+
+  <aside id="controls" class="panel" aria-label="地図コントロール">
+    <div class="panel-header">
+      <div>
+        <span class="section-label">MAP CONTROLS</span>
+        <h2>表示条件</h2>
+      </div>
+      <label for="controls-state" id="controls-close" class="round-button" aria-label="閉じる">✕</label>
+    </div>
+
+    <div class="metrics">
+      <div><strong id="visible-count">—</strong><span>表示中の島</span></div>
+      <div><strong id="total-area">—</strong><span>総面積 km²</span></div>
+    </div>
+
+    <div class="control-group">
+      <label for="prefecture">都道府県</label>
+      <select id="prefecture"><option value="">すべて</option></select>
+    </div>
+
+    <div class="control-group">
+      <div class="label-row"><label for="area-filter">最小面積</label><output id="area-output">0.02 km²</output></div>
+      <input id="area-filter" type="range" min="0" max="4" step="0.01" value="0" aria-label="最小面積">
+      <div class="range-notes"><span>0.02</span><span>10,000 km²</span></div>
+    </div>
+
+    <div class="control-group switches">
+      <label><input id="rivers-toggle" type="checkbox" checked><span>河川中心線</span></label>
+      <label><input id="mainland-toggle" type="checkbox" checked><span>分析対象外の陸地</span></label>
+    </div>
+
+    <div class="control-group">
+      <span class="group-label">クイックビュー</span>
+      <div class="button-row">
+        <button id="mainland-view" class="active">全国</button>
+        <button id="all-view">関東</button>
+      </div>
+    </div>
+
+    <details class="method">
+      <summary>抽出方法</summary>
+      <p>各陸塊から河川・運河の水域を差し引き、新たに分離した陸地を抽出。元から海で囲まれた通常の島は含みません。</p>
+    </details>
+  </aside>
+
+  <aside id="legend" class="panel">
+    <div class="panel-header compact">
+      <div>
+        <span class="section-label">ADJACENCY COLORS</span>
+        <h2>隣接カラー</h2>
+      </div>
+      <label for="legend-state" id="legend-close" class="round-button" aria-label="閉じる">✕</label>
+    </div>
+    <div id="swatches"></div>
+    <p>500 m 以内の島同士が<br>同色にならないよう配色</p>
+  </aside>
+
+  <aside id="ranking" class="panel">
+    <div class="label-row"><span class="section-label">LARGEST ISLANDS</span><span id="rank-note"></span></div>
+    <ol id="island-list"></ol>
+  </aside>
+
+  <label for="controls-state" id="controls-toggle" class="panel mobile-button" aria-label="表示条件">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M4 7h10.2a3 3 0 1 0 0-2H4v2zm0 6h3.2a3 3 0 1 0 0-2H4v2zm0 6h10.2a3 3 0 1 0 0-2H4v2z"/></svg>
+  </label>
+  <label for="legend-state" id="legend-toggle" class="panel mobile-button" aria-label="凡例">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.74zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"/></svg>
+  </label>
+
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="app.js?v=4"></script>
+</body>
+</html>
