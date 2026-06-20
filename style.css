@@ -23,7 +23,7 @@ body {
 #header {
   position: absolute; z-index: 700; top: 0; left: 0; right: 0;
   padding: max(16px, env(safe-area-inset-top)) 22px 34px;
-  background: linear-gradient(to bottom, rgba(245,245,240,.86), rgba(245,245,240,0));
+  background: none;
   pointer-events: none;
 }
 #header h1 { font-size: 15px; font-weight: 650; letter-spacing: -.32px; }
@@ -38,18 +38,19 @@ input[type="range"] { width: 100%; height: 18px; margin-top: 7px; accent-color: 
 .filter-footer { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 6px; color: rgba(60,60,67,.4); font-size: 8px; }
 .visible-result { color: var(--secondary); text-align: center; }
 .visible-result strong { color: var(--ink); font-size: 9px; font-variant-numeric: tabular-nums; }
+.opacity-control { margin-top: 10px; padding-top: 10px; border-top: .5px solid rgba(0,0,0,.07); }
+.opacity-footer { display: flex; justify-content: space-between; color: rgba(60,60,67,.4); font-size: 8px; }
 
 #about { position: absolute; z-index: 710; left: 14px; bottom: 22px; width: 256px; padding: 13px 14px; }
 #about-mobile { display: none; }
 .about-body h2 { font-size: 11px; font-weight: 650; }
 .about-body p { margin-top: 7px; color: var(--secondary); font-size: 9px; line-height: 1.55; }
-.about-body .source { padding-top: 7px; border-top: .5px solid rgba(0,0,0,.07); color: rgba(60,60,67,.48); font-size: 8px; }
 
 .leaflet-control-zoom { overflow: hidden; border: .5px solid rgba(0,0,0,.06) !important; border-radius: 11px !important; box-shadow: 0 6px 20px rgba(0,0,0,.08) !important; }
 .leaflet-control-zoom a { width: 38px !important; height: 38px !important; line-height: 38px !important; color: var(--ink) !important; background: rgba(250,250,250,.78) !important; backdrop-filter: blur(30px); border-color: rgba(0,0,0,.07) !important; }
 .leaflet-control-attribution { padding: 2px 6px !important; color: var(--secondary) !important; background: rgba(250,250,250,.72) !important; backdrop-filter: blur(20px); font-size: 8px !important; }
 .leaflet-popup-content-wrapper { padding: 0; border: .5px solid rgba(0,0,0,.06); border-radius: 14px; background: rgba(250,250,250,.78); backdrop-filter: blur(40px) saturate(180%); box-shadow: 0 8px 32px rgba(0,0,0,.13); }
-.leaflet-popup-content { min-width: 190px; margin: 16px 18px; }
+.leaflet-popup-content { min-width: auto; margin: 14px 16px; }
 .leaflet-popup-tip { display: none; }
 .leaflet-popup-close-button { top: 4px !important; right: 6px !important; color: rgba(60,60,67,.45) !important; font-size: 20px !important; }
 .popup-id { color: var(--blue); font-size: 8px; font-weight: 650; letter-spacing: .7px; }
@@ -57,6 +58,9 @@ input[type="range"] { width: 100%; height: 18px; margin-top: 7px; accent-color: 
 .popup-grid { display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; }
 .popup-grid dt { color: var(--secondary); font-size: 8px; }
 .popup-grid dd { margin: 0; font-size: 9px; font-weight: 550; }
+.popup-area { display: flex; align-items: baseline; gap: 5px; padding: 2px 0; }
+.popup-area strong { font-size: 20px; font-weight: 650; font-variant-numeric: tabular-nums; }
+.popup-area span { color: var(--secondary); font-size: 10px; }
 
 #loading { position: absolute; z-index: 1000; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #f5f5f0; transition: opacity .3s ease-out; }
 #loading.done { opacity: 0; pointer-events: none; }
@@ -69,7 +73,7 @@ input[type="range"] { width: 100%; height: 18px; margin-top: 7px; accent-color: 
   #header h1 { font-size: 14px; }
   #header small { display: none; }
   #header p { max-width: calc(100vw - 28px); font-size: 10px; }
-  #controls { top: max(96px, calc(env(safe-area-inset-top) + 86px)); right: 14px; width: 206px; }
+  #controls { top: max(116px, calc(env(safe-area-inset-top) + 106px)); right: 14px; width: 206px; }
   #about { display: none; }
   #about-mobile { display: block; position: absolute; z-index: 720; left: 14px; bottom: max(16px, env(safe-area-inset-bottom)); width: 38px; height: 38px; padding: 0; }
   #about-mobile summary { display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; color: var(--secondary); cursor: pointer; list-style: none; }

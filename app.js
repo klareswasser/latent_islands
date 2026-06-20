@@ -12,6 +12,8 @@ map.fitBounds(nationalBounds, { padding: [10, 10] });
 let islandData;
 let islandLayer;
 let minArea = 0.02;
+let baseFillOpacity = 0.8;
+let selectedLayer = null;
 
 const fmt = new Intl.NumberFormat('ja-JP', { maximumFractionDigits: 2 });
 const $ = id => document.getElementById(id);
@@ -21,30 +23,43 @@ function areaFromSlider(value) {
 }
 
 function popupHtml(p) {
-  const place = [p.prefecture, p.municipality].filter(Boolean).join(' ');
-  return `<div class="popup-id">${p.island_id}</div>
-    <div class="popup-title">${place || '無名の島'}</div>
-    <dl class="popup-grid">
-      <dt>面積</dt><dd>${fmt.format(p.area_km2)} km²</dd>
-      <dt>外周</dt><dd>${fmt.format(p.perimeter_km)} km</dd>
-      <dt>水の境界</dt><dd>${p.rivers || '名称未収録の水域'}</dd>
-    </dl>`;
+  return `<div class="popup-area"><strong>${fmt.format(p.area_km2)}</strong><span>km²</span></div>`;
+}
+
+function selectedFillOpacity() {
+  return Math.max(0.12, baseFillOpacity - 0.35);
+}
+
+function clearSelection() {
+  if (selectedLayer && islandLayer) islandLayer.resetStyle(selectedLayer);
+  selectedLayer = null;
 }
 
 function renderIslands() {
+  clearSelection();
   if (islandLayer) map.removeLayer(islandLayer);
   const features = islandData.features.filter(feature => feature.properties.area_km2 >= minArea);
   islandLayer = L.geoJSON({ type: 'FeatureCollection', features }, {
     renderer: L.canvas({ padding: 0.5 }),
     style: feature => ({
       color: '#fffdf6', weight: 1.15, opacity: 1,
-      fillColor: colors[feature.properties.color % colors.length], fillOpacity: 0.79
+      fillColor: colors[feature.properties.color % colors.length], fillOpacity: baseFillOpacity
     }),
     onEachFeature: (feature, layer) => {
       layer.bindPopup(popupHtml(feature.properties));
       layer.on({
-        mouseover: event => event.target.setStyle({ weight: 2.2, fillOpacity: .96 }),
-        mouseout: event => islandLayer.resetStyle(event.target)
+        click: event => {
+          clearSelection();
+          selectedLayer = event.target;
+          selectedLayer.setStyle({ weight: 2, fillOpacity: selectedFillOpacity() });
+        },
+        mouseover: event => event.target.setStyle({ weight: 2.2 }),
+        mouseout: event => {
+          if (event.target !== selectedLayer) islandLayer.resetStyle(event.target);
+        },
+        popupclose: event => {
+          if (event.target === selectedLayer) clearSelection();
+        }
       });
     }
   }).addTo(map);
@@ -77,6 +92,15 @@ $('area-filter').addEventListener('input', event => {
   minArea = areaFromSlider(event.target.value);
   $('area-output').textContent = `${minArea < 1 ? minArea.toFixed(2) : fmt.format(minArea)} km²`;
   renderIslands();
+});
+
+$('opacity-filter').addEventListener('input', event => {
+  const transparency = Number(event.target.value);
+  baseFillOpacity = 1 - transparency / 100;
+  $('opacity-output').textContent = `${transparency}%`;
+  if (!islandLayer) return;
+  islandLayer.eachLayer(layer => islandLayer.resetStyle(layer));
+  if (selectedLayer) selectedLayer.setStyle({ weight: 2, fillOpacity: selectedFillOpacity() });
 });
 
 init().catch(error => {
