@@ -30,7 +30,7 @@ body {
 #header p { margin-top: 3px; color: var(--secondary); font-size: 11px; }
 #header small { display: block; margin-top: 2px; color: rgba(60,60,67,.42); font-size: 9px; }
 
-#controls { position: absolute; z-index: 710; top: 14px; right: 14px; width: 226px; padding: 13px 14px 11px; }
+#controls { position: absolute; z-index: 710; left: 14px; bottom: 165px; width: 226px; padding: 13px 14px 11px; }
 .label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .label-row label { font-size: 10.5px; font-weight: 650; }
 output { color: var(--blue); font-size: 9px; font-weight: 650; font-variant-numeric: tabular-nums; }
@@ -69,9 +69,9 @@ input[type="range"] { width: 100%; height: 18px; margin-top: 7px; accent-color: 
   #header { padding: max(10px, env(safe-area-inset-top)) 14px 24px; }
   #header h1 { font-size: 14px; }
   #header small, .leaflet-top.leaflet-left { display: none; }
-  #controls { top: auto; right: 14px; bottom: max(16px, env(safe-area-inset-bottom)); width: 206px; }
+  #controls { left: 14px; bottom: max(64px, calc(env(safe-area-inset-bottom) + 48px)); width: 206px; }
   #about { display: none; }
-  #about-mobile { display: block; position: absolute; z-index: 710; left: 14px; bottom: max(16px, env(safe-area-inset-bottom)); width: 38px; height: 38px; padding: 0; }
+  #about-mobile { display: block; position: absolute; z-index: 720; left: 14px; bottom: max(16px, env(safe-area-inset-bottom)); width: 38px; height: 38px; padding: 0; }
   #about-mobile summary { display: flex; width: 38px; height: 38px; align-items: center; justify-content: center; color: var(--secondary); cursor: pointer; list-style: none; }
   #about-mobile summary::-webkit-details-marker { display: none; }
   #about-mobile .about-body { display: none; }
