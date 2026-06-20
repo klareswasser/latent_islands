@@ -6,7 +6,7 @@
   <meta name="description" content="二級河川以上の川だけ、または川と海で囲まれた日本の陸地を抽出する地図。">
   <title>日本の隠れた「島？」を探し出す</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
   <div id="loading">
@@ -26,16 +26,6 @@
   </header>
 
   <aside id="controls" class="panel" aria-label="地図コントロール">
-    <div class="label-row">
-      <label for="area-filter">最小面積</label>
-      <output id="area-output">0.02 km²</output>
-    </div>
-    <input id="area-filter" type="range" min="0" max="4" step="0.01" value="0" aria-label="最小面積">
-    <div class="filter-footer">
-      <span>0.02</span>
-      <span class="visible-result"><strong id="visible-count">—</strong> 島を表示</span>
-      <span>10,000 km²</span>
-    </div>
     <div class="opacity-control">
       <div class="label-row">
         <label for="opacity-filter">全体の透明度</label>
@@ -64,6 +54,6 @@
   </details>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=10"></script>
 </body>
 </html>

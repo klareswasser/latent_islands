@@ -11,16 +11,11 @@ map.fitBounds(nationalBounds, { padding: [10, 10] });
 
 let islandData;
 let islandLayer;
-let minArea = 0.02;
 let baseFillOpacity = 0.8;
 let selectedLayer = null;
 
 const fmt = new Intl.NumberFormat('ja-JP', { maximumFractionDigits: 2 });
 const $ = id => document.getElementById(id);
-
-function areaFromSlider(value) {
-  return 0.02 * Math.pow(10, Number(value));
-}
 
 function popupHtml(p) {
   return `<div class="popup-area"><strong>${fmt.format(p.area_km2)}</strong><span>km²</span></div>`;
@@ -38,7 +33,7 @@ function clearSelection() {
 function renderIslands() {
   clearSelection();
   if (islandLayer) map.removeLayer(islandLayer);
-  const features = islandData.features.filter(feature => feature.properties.area_km2 >= minArea);
+  const features = islandData.features;
   islandLayer = L.geoJSON({ type: 'FeatureCollection', features }, {
     renderer: L.canvas({ padding: 0.5 }),
     style: feature => ({
@@ -63,7 +58,6 @@ function renderIslands() {
       });
     }
   }).addTo(map);
-  $('visible-count').textContent = fmt.format(features.length);
 }
 
 async function init() {
@@ -87,12 +81,6 @@ async function init() {
   islandLayer.bringToFront();
   $('loading').classList.add('done');
 }
-
-$('area-filter').addEventListener('input', event => {
-  minArea = areaFromSlider(event.target.value);
-  $('area-output').textContent = `${minArea < 1 ? minArea.toFixed(2) : fmt.format(minArea)} km²`;
-  renderIslands();
-});
 
 $('opacity-filter').addEventListener('input', event => {
   const transparency = Number(event.target.value);
