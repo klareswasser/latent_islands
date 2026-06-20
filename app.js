@@ -2,7 +2,7 @@ const colors = ['#ff9800', '#4caf50', '#9e9e9e', '#1565c0', '#f44336', '#795548'
 const nationalBounds = [[24.0, 122.0], [46.1, 146.2]];
 
 const map = L.map('map', { zoomControl: false, preferCanvas: true, minZoom: 5 });
-L.control.zoom({ position: 'topright' }).addTo(map);
+L.control.zoom({ position: 'bottomright' }).addTo(map);
 L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
   maxZoom: 18,
   attribution: '<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'

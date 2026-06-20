@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="海・河川・運河によって本土から分離した、日本全国の潜在的な島を可視化する地図。">
-  <title>川がつくる島マップ</title>
+  <title>日本の隠れた「島？」を探し出す</title>
   <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <div id="loading">
@@ -17,8 +17,8 @@
   <div id="map" aria-label="日本全国の潜在島地図"></div>
 
   <header id="header">
-    <h1>川がつくる島マップ</h1>
-    <p>水の境界で読み直す日本の陸地</p>
+    <h1>日本の隠れた「島？」を探し出す</h1>
+    <p>川に囲まれた、あるいは川と海に囲まれた陸地を、隠れた「島？」として抽出。対象河川は二級河川以上。</p>
   </header>
 
   <aside id="controls" class="panel" aria-label="地図コントロール">
@@ -37,7 +37,7 @@
   <aside id="about" class="panel">
     <div class="about-body">
       <h2>この地図について</h2>
-      <p>各陸塊から河川・運河の水域を差し引き、新たに分離した陸地を抽出。元から海で囲まれた通常の島は含みません。</p>
+      <p>国土数値情報の二級河川以上の河川中心線に分析用の幅を持たせ、川だけ、または川と海で閉じられた陸地を抽出しています。元から海だけで囲まれた通常の島は対象外です。</p>
       <p class="source">出典：国土交通省「国土数値情報」<br>N03 行政区域（2025）・W05 河川（2006〜2009）</p>
     </div>
   </aside>
@@ -48,12 +48,12 @@
     </summary>
     <div class="about-body">
       <h2>この地図について</h2>
-      <p>各陸塊から河川・運河の水域を差し引き、新たに分離した陸地を抽出。元から海で囲まれた通常の島は含みません。</p>
+      <p>国土数値情報の二級河川以上の河川中心線に分析用の幅を持たせ、川だけ、または川と海で閉じられた陸地を抽出しています。元から海だけで囲まれた通常の島は対象外です。</p>
       <p class="source">出典：国土交通省「国土数値情報」<br>N03 行政区域（2025）・W05 河川（2006〜2009）</p>
     </div>
   </details>
 
   <script src="vendor/leaflet/leaflet.js"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
